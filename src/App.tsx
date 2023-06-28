@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { NewNote } from "./Note/NewNote";
 import { useLocalStorage } from "./storage";
 import { v4 as uuidV4 } from "uuid";
-import { NoteList } from "./NoteLayout/NoteList";
+import { NoteList } from "./NoteLayout/List";
 import { NoteLayout } from "./NoteLayout/NoteLayout";
 import { Note } from "./Note/Note";
 import { EditNote } from "./Note/EditNote";
