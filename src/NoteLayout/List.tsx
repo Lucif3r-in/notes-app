@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Tag } from "../App";
-import styles from "./NoteList.module.css";
+import styles from "./List.module.css";
 
 type SimplifiedNote = {
   tags: Tag[];
