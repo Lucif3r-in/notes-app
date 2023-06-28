@@ -4,9 +4,6 @@
 
 A note taking app with tag features to keep your notes sorted.
 
-## Features
-
-- List the key features of your project
 
 ## Installation
 
