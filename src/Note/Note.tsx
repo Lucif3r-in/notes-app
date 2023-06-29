@@ -75,17 +75,15 @@ export function Note({ onDelete }: NoteProps) {
           overflowY: "scroll",
         }}
       >
-        <ReactMarkdown>{note.markdown}</ReactMarkdown>
+        <div style={{ fontFamily: "Noto Serif, serif" }}>
+          <ReactMarkdown>{note.markdown}</ReactMarkdown>
+        </div>
       </div>
       {shareLink && (
         <Row className="mt-4">
           <Col>
             <div className="d-flex justify-center gap-4 mb-2">
-              {" "}
-              {/* Add a class and specify margin-bottom */}
               <div className="mr-2">
-                {" "}
-                {/* Add a class and specify margin-right */}
                 <FacebookShareButton url={shareLink}>
                   <Button variant="outline-primary">
                     <FacebookIcon size={24} round />
@@ -94,8 +92,6 @@ export function Note({ onDelete }: NoteProps) {
                 </FacebookShareButton>
               </div>
               <div className="mr-2">
-                {" "}
-                {/* Add a class and specify margin-right */}
                 <TwitterShareButton url={shareLink}>
                   <Button variant="outline-primary">
                     <TwitterIcon size={24} round />
@@ -104,8 +100,6 @@ export function Note({ onDelete }: NoteProps) {
                 </TwitterShareButton>
               </div>
               <div>
-                {" "}
-                {/* No need for margin */}
                 <WhatsappShareButton url={shareLink}>
                   <Button variant="outline-primary">
                     <WhatsappIcon size={24} round />
