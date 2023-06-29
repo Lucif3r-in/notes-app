@@ -48,7 +48,7 @@ export function NoteForm({
           </Col>
           <Col>
             <Form.Group controlId="tags">
-              <Form.Label>Tags</Form.Label>
+              <Form.Label style={{ fontWeight: "700" }}>Tags</Form.Label>
               <CreatableReactSelect
                 onCreateOption={(label) => {
                   const newTag = { id: uuidV4(), label };

@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
+html,
+body {
+  background-image: url("https://res.cloudinary.com/dhnkuonev/image/upload/v1688049614/bg_mhtrz0.webp");
+  background-size: cover;
+  background-blend-mode: multiply;
+  font-family: "Kalam", cursive;
+}
 .card {
   transition: translate ease-in-out 100ms, box-shadow ease-in-out 100ms;
 }
@@ -5,5 +13,5 @@
 .card:hover,
 .card:focus {
   translate: 0 -5px;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, .2);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2);
 }
