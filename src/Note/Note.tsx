@@ -55,7 +55,7 @@ export function Note({ onDelete }: NoteProps) {
             >
               Delete
             </Button>
-            <Button variant="outline-secondary" onClick={shareNote}>
+            <Button variant="outline-secondary" onClick={shareNote} disabled>
               Share
             </Button>
             <Link to="/">
