@@ -3,6 +3,7 @@ import { Badge, Button, Col, Row, Stack } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "../NoteLayout/Layout";
 import ReactMarkdown from "react-markdown";
+import { Document, Page, Text, PDFDownloadLink } from "@react-pdf/renderer";
 
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import {
@@ -15,16 +16,32 @@ type NoteProps = {
   onDelete: (id: string) => void;
 };
 
-export function Note({ onDelete }: NoteProps) {
+export const Note: React.FC<NoteProps> = ({ onDelete }) => {
   const note = useNote();
   const navigate = useNavigate();
-
   const [shareLink, setShareLink] = useState("");
+  const [generatingPDF, setGeneratingPDF] = useState(false);
 
   const shareNote = () => {
     const link = `${window.location.origin}/${note.id}`;
     setShareLink(link);
   };
+
+  const handlePDFDownload = () => {
+    setGeneratingPDF(true);
+    setTimeout(() => {
+      setGeneratingPDF(false);
+    }, 2000);
+  };
+
+  const PDFDocument: React.FC = () => (
+    <Document>
+      <Page>
+        <Text>{note.title}</Text>
+        <Text>{note.markdown}</Text>
+      </Page>
+    </Document>
+  );
 
   return (
     <>
@@ -61,6 +78,15 @@ export function Note({ onDelete }: NoteProps) {
             <Link to="/">
               <Button variant="outline-secondary">Back</Button>
             </Link>
+            <PDFDownloadLink
+              document={<PDFDocument />}
+              fileName="note.pdf"
+              onClick={handlePDFDownload}
+            >
+              {({ loading }: { loading: boolean }) =>
+                loading ? "Generating PDF..." : "Download PDF"
+              }
+            </PDFDownloadLink>
           </Stack>
         </Col>
       </Row>
@@ -72,7 +98,7 @@ export function Note({ onDelete }: NoteProps) {
           padding: "20px",
           fontSize: "18px",
           height: "500px",
-          overflowY: "scroll",
+          overflowY: "auto",
         }}
       >
         <div style={{ fontFamily: "Noto Serif, serif" }}>
@@ -113,4 +139,4 @@ export function Note({ onDelete }: NoteProps) {
       )}
     </>
   );
-}
+};
