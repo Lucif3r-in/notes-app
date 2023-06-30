@@ -3,7 +3,13 @@ import { Badge, Button, Col, Row, Stack } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "../NoteLayout/Layout";
 import ReactMarkdown from "react-markdown";
-import { Document, Page, Text, PDFDownloadLink } from "@react-pdf/renderer";
+import {
+  Document,
+  Page,
+  Text,
+  PDFDownloadLink,
+  StyleSheet,
+} from "@react-pdf/renderer";
 
 import { FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share";
 import {
@@ -15,6 +21,22 @@ import {
 type NoteProps = {
   onDelete: (id: string) => void;
 };
+
+const styles = StyleSheet.create({
+  document: {
+    padding: "20px",
+  },
+  title: {
+    fontSize: 28,
+    textAlign: "center",
+    paddingBottom: "20px",
+    fontWeight: "extrabold",
+    textDecoration: "underline",
+  },
+  content: {
+    fontSize: 18,
+  },
+});
 
 export const Note: React.FC<NoteProps> = ({ onDelete }) => {
   const note = useNote();
@@ -36,9 +58,9 @@ export const Note: React.FC<NoteProps> = ({ onDelete }) => {
 
   const PDFDocument: React.FC = () => (
     <Document>
-      <Page>
-        <Text>{note.title}</Text>
-        <Text>{note.markdown}</Text>
+      <Page style={styles.document}>
+        <Text style={styles.title}>{note.title}</Text>
+        <Text style={styles.content}>{note.markdown}</Text>
       </Page>
     </Document>
   );
